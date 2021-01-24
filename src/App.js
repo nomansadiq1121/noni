@@ -1,20 +1,25 @@
 // import logo from './logo.svg';
 import React, {useState}   from 'react';
+import {Message} from './message.js';
 import './App.css';
 // import Dinner from './dinner.js';
 
 function App() {
-    let [count, setcount] = useState(1);
+    let [count, setcount] = useState(0);
+    let [ismorning, setMorning] =useState (false)
     return (
-    <div >
-      <h3>noman is :{count}</h3>
+    <div className ={`box ${ismorning ? 'daylight':'false'}`} >
+      <h2>  good { ismorning ? 'Morning': 'night'} </h2>
+      <Message counter={count}/>
       <br/>
       <button onClick={
-        ()=> alert('button pressed')
+        ()=> setcount(++count)
       }>
         update counter
+        </button>
 
-      </button>
+        <button  onClick={()=>setMorning(!ismorning)}> update day   </button>
+      
     </div>
   );
 }
